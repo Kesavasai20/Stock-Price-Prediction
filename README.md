@@ -20,9 +20,9 @@ Write your own steps
 
 
 ## Program
-#### Name:
-#### Register Number:
-Include your code here
+#### Name: K KESAVA SAI
+#### Register Number: 212223230105
+
 ```Python 
 # Define RNN Model
 class RNNModel(nn.Module):
@@ -53,11 +53,13 @@ optimizer =
 
 ### True Stock Price, Predicted Stock Price vs time
 
-Include your plot here
+![image](https://github.com/user-attachments/assets/ce519f9e-8567-4cbc-a316-633ba6879589)
+
 
 ### Predictions 
 
-Include the predictions on test data
+![image](https://github.com/user-attachments/assets/fcf2bb2a-ab62-4155-905f-20676020e3f8)
+
 
 ## Result
 
