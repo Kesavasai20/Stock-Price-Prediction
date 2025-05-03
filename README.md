@@ -26,25 +26,42 @@ Write your own steps
 ```Python 
 # Define RNN Model
 class RNNModel(nn.Module):
-    # write your code here
+    def __init__(self, input_size, hidden_size, output_size, num_layers=1):
+        super(RNNModel, self).__init__()
+        self.rnn = nn.RNN(input_size, hidden_size, num_layers, batch_first=True)
+        self.fc = nn.Linear(hidden_size, output_size)
+
+    def forward(self, x):
+        out, _ = self.rnn(x)
+        out = self.fc(out[:, -1, :])
+        return out
 
 
 
 
 
-model =
-criterion =
-optimizer =
+model = model.to(device)
+criterion = nn.MSELoss()
+optimizer = torch.optim.Adam(model.parameters(),lr=0.01)
 
 
 # Train the Model
+epochs=40
+model.train()
+train_losses=[]
 
-# Write your code here
-
-
-
-
-
+for epoch in range(epochs):
+    epoch_loss=0
+    for x_batch, y_batch in train_loader:
+        x_batch,y_batch=x_batch.to(device),y_batch.to(device)
+        optimizer.zero_grad()
+        outputs=model(x_batch)
+        loss=criterion(outputs,y_batch)
+        loss.backward()
+        optimizer.step()
+        epoch_loss+=loss.item()
+    train_losses.append(epoch_loss/len(train_loader))
+    print(f"Epoch [{epoch+1}/{epochs}], loss: {train_losses[-1]:.4f}")
 
 
 ```
